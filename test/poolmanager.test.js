@@ -67,7 +67,7 @@ describe('poolmanager module:', function() {
             poolmanager.createPool(config)
                 .then(function(pool) {
                     assert.equal(pool.connectionsInUse, 0);
-                    assert.equal(pool.poolName, poolmanager._defaultPoolKey);
+                    assert.equal(pool._poolName, poolmanager._defaultPoolKey);
 
                     done();
                 })
@@ -238,7 +238,7 @@ describe('poolmanager module:', function() {
                     return done(err);
                 }
 
-                pool.poolName = badPoolName;
+                pool._poolName = badPoolName;
 
                 poolmanager.terminatePool(pool, function(err) {
                     if (err) {
